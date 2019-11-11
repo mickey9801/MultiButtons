@@ -107,6 +107,13 @@ int MultiButtons::_readButton () {
   return _button;
 }
 
+int MultiButtons::printReading(int pin) {
+  int z;
+  z = analogRead(pin);
+  if (z > 0) Serial.println(z);
+  return z;
+}
+
 bool MultiButtons::isPressing() {
   int z;
   z = analogRead(this->_pin);

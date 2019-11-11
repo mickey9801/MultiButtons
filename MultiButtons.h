@@ -63,6 +63,12 @@ class MultiButtons {
      * Should be put in loop()
      */
     void loop();
+    
+    /*
+     * Print analog button pin reading via serial debug console
+     * when the reading greater than 0, and return the reading anyway.
+     */
+    static int printReading(int pin);
 
     /*
      * Check button is being pressed

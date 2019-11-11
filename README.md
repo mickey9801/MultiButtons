@@ -1,10 +1,10 @@
 # Multiple Buttons Library
 
-This is a library for handling multiple buttons with single analog pin for ESP32 (3.3V pin). It will trigger callback function upon button pressed.
+This is a library for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.
 
-The library handled button debouncing, and you may decide trigger edge for the button event - press edge (default) or release edge.
+The library handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.
 
-It also applied reading adjustment for ESP32 analog pins (see below).
+The library also provide `printReading()` method for you to check the analog pin reading.
 
 In theory you may add more buttons in the circuit.
 
@@ -18,17 +18,39 @@ In theory you may add more buttons in the circuit.
 
 ## Determin Voltage Readings for Each Button
 
-To provide voltage range for each button, you may check the actual readings with the following code:  
+To provide voltage range for each button, you may check the actual readings with `printReading()` method.
+
+The following sketch can calculate the avarage reading of a button:  
 
 ```cpp
-unsigned long prevPress = 0;
+#include <MultiButtons.h>
+
+int buffer[5];
+int reading, sum, avg;
 
 void setup() {
   Serial.begin(115200);
 }
 
 void loop() {
-  Serial.println(analogRead(14));
+  static int i = 0;
+  reading = MultiButtons::printReading(35);
+  if (reading > 0) {
+    buffer[i] = reading;
+    if (i == 4) {
+      for (int j = 0; j < 5; j++) {
+        sum += buffer[j];
+      }
+      avg = sum / 5;
+      Serial.print("Avarage Reading: ");
+      Serial.println(avg);
+    }
+    i++;
+    if (i > 4) {
+      i = 0;
+      sum = 0;
+    }
+  }
   delay(200);
 }
 ```
