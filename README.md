@@ -219,7 +219,7 @@ Button|MultiMeter Measurement|Expected Value
 3     |1.30V~1.31V           |1605~1617
 4     |0.65V                 |802
 
-There is required an adjustment for ESP32 ADC with the following equation:  
+It is required an adjustment for ESP32 ADC with the following equation:  
 
 `Vout = e / 4095.0 * 3.3 + 0.1132`
 
