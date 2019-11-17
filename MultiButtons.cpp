@@ -114,6 +114,10 @@ int MultiButtons::printReading(int pin) {
   return z;
 }
 
+bool MultiButtons::isPressingAny(int pin) {
+  return (bool)analogRead(pin);
+}
+
 bool MultiButtons::isPressing() {
   int z;
   z = analogRead(this->_pin);

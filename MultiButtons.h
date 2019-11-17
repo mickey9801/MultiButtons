@@ -69,6 +69,7 @@ class MultiButtons {
      * when the reading greater than 0, and return the reading anyway.
      */
     static int printReading(int pin);
+    static bool isPressingAny(int pin);
 
     /*
      * Check button is being pressed
