@@ -20,7 +20,7 @@ void buttonHandler (MultiButtons *mb, int btnIndex) {
   Serial.print("Button pressed: ");
   Serial.println(btnID);
 }
-MultiButtons mb = MultiButtons(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
+MultiButtons mb(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
 
 void setup() {
   Serial.begin(115200);

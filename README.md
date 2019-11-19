@@ -68,13 +68,13 @@ void loop() {
 2. **Declare voltage range for each button**
 
    ```cpp
-   const int btnCount = 4;
    int voltageRanges[][2] = {
      {3000,3260},
      {2200,2450},
      {1400,1620},
      {600,810}
    };
+   int btnCount = sizeof(voltageRanges)/sizeof(voltageRanges[0]);
    ```
    
 3. **Declare callback function**
@@ -101,7 +101,7 @@ void loop() {
 4. **Construct MultiButtons object**
 
    ```cpp
-   MultiButtons mb = MultiButtons(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
+   MultiButtons mb(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
    ```
    
    Parameters: 
@@ -135,7 +135,7 @@ void loop() {
 ### Inline manner
 
 ```cpp
-MultiButtons mb = MultiButtons(btnPin, btnCount, new int[btnCount][2]{
+MultiButtons mb(btnPin, btnCount, new int[btnCount][2]{
     {3000,3260},
     {2200,2450},
     {1400,1620},
@@ -155,13 +155,13 @@ MultiButtons mb = MultiButtons(btnPin, btnCount, new int[btnCount][2]{
 const int btnPin = 14;
 
 // Declare voltage ranges for each button
-const int btnCount = 4;
 int voltageRanges[][2] = {
   {3000,3260},
   {2200,2450},
   {1400,1620},
   {600,810}
 };
+int btnCount = sizeof(voltageRanges)/sizeof(voltageRanges[0]);
 // Must declare buttonHandler callback function and used variables 
 // before generate MultiButtons object
 void buttonHandler (MultiButtons *mb, int btnIndex) {
@@ -172,7 +172,7 @@ void buttonHandler (MultiButtons *mb, int btnIndex) {
   Serial.print("Button pressed: ");
   Serial.println(btnID);
 }
-MultiButtons mb = MultiButtons(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
+MultiButtons mb(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
 
 void setup() {
   Serial.begin(115200);
