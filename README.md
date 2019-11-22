@@ -1,10 +1,10 @@
-# Multiple Buttons Library
+# Multiple Buttons Module
 
-This is a library for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.
+This is a module for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.
 
-The library handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.
+The module handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.
 
-The library also provide `printReading()` method for you to check the analog pin reading.
+It also provide `printReading()` method for you to check the analog pin reading.
 
 In theory you may add more buttons in the circuit.
 
@@ -55,11 +55,11 @@ void loop() {
 }
 ```
 
-**NOTE: Readings of analog pin may vary upon other connected devices. Voltage ranges for each button should decide  based on measurement of the final circuit with all required devices initialized.**  
+**NOTE: Readings of analog pin may vary upon other connected devices. Voltage ranges for each button should decide based on measurement of the final circuit with all required devices initialized.**  
 
 ## Usage
 
-1. **Include the library**
+1. **Include the module**
 
    ```cpp
    #include <MultiButtons.h>
@@ -106,14 +106,14 @@ void loop() {
    
    Parameters: 
    
-   Parameter                 | Description
-   --------------------------|------------
-   int pin                   | GPIO for button array
-   int buttonCount           | Number of buttons connected
-   int arrVoltageRanges[][2] | Upper bound and Lower bound of voltage for each button (see above step 2.)
-   callback_t callback       | Callback function of actions according to pressed button (see above step 3.)
-   int adcMax                | The maxmium value of ADC. Default is 4095 (12bit ADC)
-   int triggerEdge           | Which edge trigger button press event.<br>On press (0, default) or on release (1)
+   Parameter                     | Description
+   ------------------------------|------------
+   int pin                       | GPIO for button array
+   int buttonCount               | Number of buttons connected
+   int arrVoltageRanges\[\]\[2\] | Upper bound and Lower bound of voltage for each button (see above step 2.)
+   callback_t callback           | Callback function of actions according to pressed button (see above step 3.)
+   int adcMax                    | The maxmium value of ADC. Default is 4095 (12bit ADC)
+   int triggerEdge               | Which edge trigger button press event.<br>On press (0, default) or on release (1)
    
    
 5. **Prepare MultiButtons object for reading analog pin**
