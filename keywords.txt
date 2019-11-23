@@ -6,21 +6,21 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-MultiButtons	KEYWORD1
+MultiButtons			KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-begin           KEYWORD2
-loop            KEYWORD2
-printReading    KEYWORD2
-isPressingAny   KEYWORD2
-isPressing      KEYWORD2
-getTriggerEdge  KEYWORD2
-setTriggerEdge  KEYWORD2
-_getButton      KEYWORD2
-_readButton     KEYWORD2
+begin					KEYWORD2
+loop					KEYWORD2
+printReading			KEYWORD2
+isPressingAny			KEYWORD2
+isPressing				KEYWORD2
+getTriggerEdge			KEYWORD2
+setTriggerEdge			KEYWORD2
+_getButton				KEYWORD2
+_readButton				KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
@@ -30,7 +30,7 @@ _readButton     KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
-BTN_READ_PHASE_1ST_PASS  LITERAL1
-BTN_READ_PHASE_2ND_PASS  LITERAL1
-BTN_TRIGGER_EDGE_PRESS   LITERAL1
-BTN_TRIGGER_EDGE_RELEASE LITERAL1
+BTN_READ_PHASE_1ST_PASS		LITERAL1
+BTN_READ_PHASE_2ND_PASS		LITERAL1
+BTN_TRIGGER_EDGE_PRESS		LITERAL1
+BTN_TRIGGER_EDGE_RELEASE	LITERAL1

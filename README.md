@@ -1,12 +1,12 @@
-# Multiple Buttons Module
+# Multiple Buttons Library
 
-This is a module for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.
+This is a library for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.  
 
-The module handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.
+The library handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.  
 
-It also provide `printReading()` method for you to check the analog pin reading.
+It also provide `printReading()` method for you to check the analog pin reading.  
 
-In theory you may add more buttons in the circuit.
+In theory you may add more buttons in the circuit.  
 
 ## Reference Circuit
 
@@ -14,13 +14,13 @@ In theory you may add more buttons in the circuit.
 
 ## Installation
 
-[Download or clone this repository into your arduino libraries directory](https://help.github.com/articles/cloning-a-repository/)
+[Download or clone this repository into your arduino libraries directory](https://help.github.com/articles/cloning-a-repository/)  
 
 ## Determin Voltage Readings for Each Button
 
-To provide voltage range for each button, you may check the actual readings with `printReading()` method.
+To provide voltage range for each button, you may check the actual readings with `printReading()` method.  
 
-The following sketch can calculate the avarage reading of a button:  
+The following sketch can calculate the avarage reading of a button from 5 readings:  
 
 ```cpp
 #include <MultiButtons.h>
@@ -34,7 +34,7 @@ void setup() {
 
 void loop() {
   static int i = 0;
-  reading = MultiButtons::printReading(35);
+  reading = MultiButtons::printReading(14);
   if (reading > 0) {
     buffer[i] = reading;
     if (i == 4) {
@@ -98,7 +98,7 @@ void loop() {
 	}
    ```
    
-4. **Construct MultiButtons object**
+4. **Create MultiButtons object**
 
    ```cpp
    MultiButtons mb(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGER_EDGE_PRESS);
@@ -116,7 +116,7 @@ void loop() {
    int triggerEdge               | Which edge trigger button press event.<br>On press (0, default) or on release (1)
    
    
-5. **Prepare MultiButtons object for reading analog pin**
+5. **Setup MultiButtons object for reading analog pin**
 
    ```cpp
    void setup() {
@@ -187,6 +187,64 @@ void loop() {
 }
 ```
 
+## Other methods
+
+- *static* int **printReading (** int **pin )**
+  
+  Print analog pin reading through Serial port and return the reading.  
+  
+  ```cpp
+  int reading = MultiButtons::printReading(14);
+  ```
+
+- *static* bool **isPressingAny (** int **pin )**
+  
+  Class method for checking if any button in the button array pressed.  
+  
+  ```cpp
+  bool result = MultiButtons::isPressingAny(14);
+  ```
+  
+- bool **isPressing ()**  
+  
+  Object method version of `isPressingAny()`.  
+  
+  ```cpp
+  bool result = mb.isPressing();
+  ```
+
+- bool **isPressing (** int **btnIndex** **)**  
+  
+  Check designated button is pressing. Button index begin from 0.  
+  
+  ```cpp
+  bool result = mb.isPressing(0);
+  ```
+  
+- int **getTriggerEdge ()**
+  
+  Retrieve trigger edge value.
+  
+  ```cpp
+  int edge = mb.getTriggerEdge();
+  ```
+  
+  Possible value:
+  
+  Edge                        |Value|Description
+  :---------------------------|:---:|:----------
+  BTN\_TRIGGER\_EDGE\_PRESS   |  0  | Trigger button event on press
+  BTN\_TRIGGER\_EDGE\_RELEASE |  1  | Trigger button event on release
+
+- bool **setTriggerEdge (** int **edge )**
+  
+  Set trigger edge. Return `true` when success, `false` if provide invalid value.  
+  
+  ```cpp
+  bool result = mb.setTriggerEdge(BTN_TRIGGER_EDGE_PRESS);
+  ```
+
+
 ## Reference
 
 - [Multiple button inputs using Arduino analog pin](https://rayshobby.net/wordpress/multiple-button-inputs-using-arduino-analog-pin/)
@@ -213,7 +271,7 @@ R1+R2 = 5K&#8486; = 5000&#8486;
 3.3V/4095 = 0.81mV  
 
 Button|MultiMeter Measurement|Expected Value
-------|----------------------|-----------------
+:----:|----------------------|-----------------
 1     |2.62V                 |3259
 2     |1.96V~1.97V           |2420~2432
 3     |1.30V~1.31V           |1605~1617
@@ -224,7 +282,7 @@ It is required an adjustment for ESP32 ADC with the following equation:
 `Vout = e / 4095.0 * 3.3 + 0.1132`
 
 Button|Circuit Measurement|Serial Debug Data|Calculated Voltage w' Adjustment
-------|-------------------|-----------------|------------------
+:----:|-------------------|-----------------|------------------
 1     |2.61V              |3070~3103        |2.59V~2.61V
 2     |1.95V~1.96V        |2237~2255        |1.92V~1.93V
 3     |1.30V              |1456~1461        |~1.29V

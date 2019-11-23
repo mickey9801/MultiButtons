@@ -110,7 +110,7 @@ int MultiButtons::_readButton () {
 int MultiButtons::printReading(int pin) {
   int z;
   z = analogRead(pin);
-  if (z > 0) Serial.println(z);
+  if (z > 100) Serial.println(z);
   return z;
 }
 

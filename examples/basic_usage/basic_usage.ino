@@ -1,6 +1,6 @@
 #include <MultiButtons.h>
 
-const int btnPin = 14;
+const int btnPin = 35;
 
 // Declare voltage ranges for each button
 int voltageRanges[][2] = {
@@ -24,6 +24,10 @@ MultiButtons mb(btnPin, btnCount, voltageRanges, buttonHandler, 4095, BTN_TRIGGE
 
 void setup() {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  Serial.println();
   
   mb.begin(); // Prepare reading button state
   

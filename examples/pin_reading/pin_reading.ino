@@ -5,6 +5,10 @@ int reading, sum, avg;
 
 void setup() {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  Serial.println();
 }
 
 void loop() {
