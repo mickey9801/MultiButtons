@@ -14,7 +14,8 @@ In theory you may add more buttons in the circuit.
 
 ## Installation
 
-[Download or clone this repository into your arduino libraries directory](https://help.github.com/articles/cloning-a-repository/)  
+1. [Arduino Library Manager (Recommended)](https://www.arduino.cc/en/Guide/Libraries)  
+2. [Download or clone this repository into your arduino libraries directory](https://help.github.com/articles/cloning-a-repository/)  
 
 ## Determin Voltage Readings for Each Button
 
