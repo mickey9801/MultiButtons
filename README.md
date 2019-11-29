@@ -111,7 +111,7 @@ void loop() {
    ------------------------------|------------
    int pin                       | GPIO for button array
    int buttonCount               | Number of buttons connected
-   int arrVoltageRanges\[\]\[2\] | Upper bound and Lower bound of voltage for each button (see above step 2.)
+   int voltageRanges\[\]\[2\]    | Upper bound and Lower bound of voltage for each button (see above step 2.)
    callback_t callback           | Callback function of actions according to pressed button (see above step 3.)
    int adcMax                    | The maxmium value of ADC. Default is 4095 (12bit ADC)
    int triggerEdge               | Which edge trigger button press event.<br>On press (0, default) or on release (1)
