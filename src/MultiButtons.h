@@ -66,7 +66,7 @@ class MultiButtons {
     
     /*
      * Print analog button pin reading via serial debug console
-     * when the reading greater than 0, and return the reading anyway.
+     * when the reading greater than 100.
      */
     static int printReading(int pin);
     static bool isPressingAny(int pin);

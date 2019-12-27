@@ -1,5 +1,7 @@
 # Multiple Buttons Library
 
+**A totally rebuilt library [ButtonFever](https://github.com/mickey9801/ButtonFever) has been released. It provide much powerful tools for handling various button press event such as double press and long press. It also support both standalone digital button or button array. Please try it!**
+
 This is a library for handling multiple buttons with single analog pin for ESP32. It will trigger callback function upon button pressed.  
 
 The library handled button debouncing, and you may decide the trigger edge for button event - on press (default) or on release.  
